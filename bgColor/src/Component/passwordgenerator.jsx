@@ -2,33 +2,23 @@ import React, { useState } from "react";
 import { RangeSlider } from "./RangeSlider";
 
 /* Function to generate combination of password */
-function generatePass(ps, intChar, specChar) {
-  let pass = "";
-  let str = "";
+function generatePass(passwordLength, includeNumbers, includeSpecialChars) {
+  const alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+  const numbers = "0123456789";
+  const specialChars = "@#$";
 
-  let str1 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" + "abcdefghijklmnopqrstuvwxyz";
-  let str2 =
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZ" + "abcdefghijklmnopqrstuvwxyz0123456789";
-  let str3 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" + "abcdefghijklmnopqrstuvwxyz@#$";
-  let str4 =
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZ" + "abcdefghijklmnopqrstuvwxyz0123456789@#$";
+  let characters = alpha;
+  if (includeNumbers) characters += numbers;
+  if (includeSpecialChars) characters += specialChars;
 
-  if (intChar && specChar) {
-    str = str4;
-  } else if (intChar) {
-    str = str2;
-  } else if (specChar) {
-    str = str3;
-  } else {
-    str = str1;
-  }
-  for (let i = 1; i <= ps; i++) {
-    let char = Math.floor(Math.random() * str.length + 1);
+  let password = "";
 
-    pass += str.charAt(char);
+  for (let i = 0; i < passwordLength; i++) {
+    const randomIndex = Math.floor(Math.random() * characters.length);
+    password += characters.charAt(randomIndex);
   }
 
-  return pass;
+  return password;
 }
 
 const PasswordGeneartor = () => {
