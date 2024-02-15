@@ -1,15 +1,17 @@
 import { useState } from "react";
-import PasswordGeneartor from "./Component/passwordgenerator.jsx";
+import CurrencyConverter from "./Component/currencyConverter/CurrencyConverter.jsx";
 
 function App() {
-  return (
-    <div className="App flex justify-center items-center h-screen">
-      <div className="w-full max-w-md p-4 border border-gray-300 rounded shadow-lg">
-        <PasswordGeneartor />
-      </div>
-    </div>
-  );
+  return <CurrencyConverter />;
 }
+
+// return (
+//   <div className="App flex justify-center items-center h-screen">
+//     <div className="w-full max-w-md p-4 border border-gray-300 rounded shadow-lg">
+//       <PasswordGeneartor />
+//     </div>
+//   </div>
+// );
 
 //const [color, setColor] = useState("olive");
 //   return (
